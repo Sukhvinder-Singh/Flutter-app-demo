@@ -57,6 +57,54 @@ class PageTemplate extends StatelessWidget {
           ),
         ],
       ),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+
+            ListTile(
+              title: Text("Home"),
+              trailing: Icon(Icons.home),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, '/');
+              },
+            ),
+
+            ListTile(
+              title: Text("London"),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, '/london');
+              },
+            ),
+            ListTile(
+              title: Text("New York"),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, '/newyork');
+              },
+            ),
+            ListTile(
+              title: Text("Paris"),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, '/paris');
+              },
+            ),
+            ListTile(
+              title: Text("Tokyo"),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, '/tokyo');
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

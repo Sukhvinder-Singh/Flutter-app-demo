@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sample_app_1/contents.dart';
 import 'package:sample_app_1/mainpage.dart';
 import 'package:sample_app_1/template.dart';
+import 'package:sample_app_1/testpage.dart';
 
 
 
@@ -15,6 +16,7 @@ void main() {
       '/newyork': (context) => NewYork(),
       '/paris': (context) => Paris(),
       '/tokyo': (context) => Tokyo(),
+      '/testpage' : (context) => Tt(),
     },
   ));
 }
@@ -63,4 +65,11 @@ class Tokyo extends StatelessWidget {
     return PageTemplate(
         color_tokyo, 'Japan', 'assets/tokyo.jpg', 'Tokyo', tokyo);
   }
+}
+
+class Tt extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return PageTest();
+}
 }

@@ -116,7 +116,7 @@ class GoBackButton extends StatelessWidget {
         width: double.infinity,
         child: new RaisedButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pushNamed(context, '/');
           },
           textColor: Colors.white,
           color: _themeColor,

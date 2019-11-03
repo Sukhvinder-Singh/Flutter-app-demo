@@ -51,14 +51,59 @@ class MainPage extends StatelessWidget {
                 MainHeadingStrip(_themeColor, _mainHeadingText),
                 IconRow(_themeColor),
                 ...getContentCards(_contents),
-                CustomButton(Color.fromRGBO(204, 0, 0, 1.0), 'London', '/london'),
-                CustomButton(Color.fromRGBO(0, 153, 255, 1.0), 'New York', '/newyork'),
-                CustomButton(Color.fromRGBO(230, 138, 0, 1.0), 'Paris', '/paris'),
-                CustomButton(Color.fromRGBO(153, 0, 153, 1.0), 'Tokyo', '/tokyo'),
+                CustomButton(
+                    Color.fromRGBO(204, 0, 0, 1.0), 'London', '/london'),
+                CustomButton(
+                    Color.fromRGBO(0, 153, 255, 1.0), 'New York', '/newyork'),
+                CustomButton(
+                    Color.fromRGBO(230, 138, 0, 1.0), 'Paris', '/paris'),
+                CustomButton(
+                    Color.fromRGBO(153, 0, 153, 1.0), 'Tokyo', '/tokyo'),
+                CustomButton(
+                    Color.fromRGBO(153, 0, 153, 1.0), 'testpage', '/testpage'),
               ],
             ),
           ),
         ],
+      ),
+
+            drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            ListTile(
+              title: Text("London"),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, '/london');
+              },
+            ),
+            ListTile(
+              title: Text("New York"),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, '/newyork');
+              },
+            ),
+            ListTile(
+              title: Text("Paris"),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, '/paris');
+              },
+            ),
+            ListTile(
+              title: Text("Tokyo"),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, '/tokyo');
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
