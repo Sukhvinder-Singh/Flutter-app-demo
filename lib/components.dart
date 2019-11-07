@@ -127,3 +127,38 @@ class GoBackButton extends StatelessWidget {
     );
   }
 }
+
+class CustomTabBarSection extends StatelessWidget {
+  final List _data;
+  CustomTabBarSection(this._data);
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      top: false,
+      bottom: false,
+      child: Builder(
+        builder: (BuildContext context) {
+          return CustomScrollView(
+            slivers: <Widget>[
+              SliverOverlapInjector(
+                handle:
+                    NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+              ),
+              SliverPadding(
+                padding: const EdgeInsets.all(8.0),
+                sliver: SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      ..._data,
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+}
