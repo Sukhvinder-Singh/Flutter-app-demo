@@ -1,5 +1,3 @@
-import 'package:sample_app_1/model.dart';
-
 List<String> home = [
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'
@@ -33,6 +31,6 @@ List<String> paris = [
   'Because the city of Paris is roughly only 6 miles across, visitors have a wide range of options when it comes to transportation. While much of the more well-known attractions are in the center of the city and are best experienced by walking, there are many destinations that require other means of transport. While taxis offer a fast and relatively inexpensive means of travel, Paris’ public transportation system offers an enjoyable, stress-free way to explore the city.',
 ];
 
-CityData cityLondon = new CityData('London', '/london', london, london);
+/*CityData cityLondon = new CityData('London', '/london', london, london);
 
-CityController londonController = new CityController(cityLondon);
+CityController londonController = new CityController(cityLondon);*/

@@ -77,6 +77,33 @@ class ContentCard extends StatelessWidget {
   }
 }
 
+class PlaceCard extends StatelessWidget {
+  final String _imagePath, _placeName, _placeDescription;
+  PlaceCard(this._imagePath, this._placeName, this._placeDescription);
+  @override
+  Widget build(BuildContext context) {
+    return new Card(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          ListTile(
+            leading: CircleAvatar(
+              radius: 18,
+              child: ClipOval(
+                child: Image.network(
+                  _imagePath,
+                ),
+              ),
+            ),
+            title: Text(_placeName),
+            subtitle: Text(_placeDescription),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class CustomButton extends StatelessWidget {
   final Color _themeColor;
   final String _buttonText, _buttonRoute;

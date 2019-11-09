@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sample_app_1/citydata.dart';
 import 'package:sample_app_1/contents.dart';
 import 'package:sample_app_1/mainpage.dart';
+import 'package:sample_app_1/model.dart';
 import 'package:sample_app_1/template.dart';
 import 'package:sample_app_1/test-template.dart';
+
 
 
 
@@ -72,6 +75,6 @@ class Tokyo extends StatelessWidget {
 class Tt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return TestTemplate(Colors.red, 'London', 'assets/london.jpg', londonController);
+    return TestTemplate(Colors.red, 'London', 'assets/london.jpg', CityController(londons));
 }
 }

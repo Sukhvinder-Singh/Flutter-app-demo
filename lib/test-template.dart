@@ -104,7 +104,7 @@ class TestTemplate extends StatelessWidget {
 
               _city.displayCityInfo(),
               _city.displayCityInfo(),
-              _city.displayCityInfo(),
+              _city.displayPlaceInfo(),
             ],
           ),
         ),
