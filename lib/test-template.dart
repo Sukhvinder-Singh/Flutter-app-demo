@@ -22,7 +22,7 @@ class TestTemplate extends StatelessWidget {
                 child: SliverAppBar(
                   title: Text(_appBarText), // This is the title in the app bar.
                   pinned: true,
-                  expandedHeight: 200,
+                  expandedHeight: 350,
                   centerTitle: true,
                   backgroundColor: _themeColor,
                   forceElevated: innerBoxIsScrolled,
@@ -32,14 +32,23 @@ class TestTemplate extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  bottom: TabBar(
-                    indicatorColor: Colors.white,
-                    indicatorWeight: 4.0,
-                    tabs: [
-                      Tab(icon: Icon(Icons.info), text: "Information"),
-                      Tab(icon: Icon(Icons.location_on), text: "Tourist places"),
-                      Tab(icon: Icon(Icons.subway), text: "Metro/Subway"),
-                    ],
+
+                  bottom: PreferredSize(
+                    preferredSize: new Size.fromHeight(85),
+                    child: Container(
+                      color: _themeColor,
+                      child: TabBar(
+                        indicatorColor: Colors.white,
+                        indicatorWeight: 5.0,
+                        tabs: [
+                          Tab(icon: Icon(Icons.info), text: "Information"),
+                          Tab(
+                              icon: Icon(Icons.location_on),
+                              text: "Tourist places"),
+                          Tab(icon: Icon(Icons.subway), text: "Metro/Subway"),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -49,7 +58,7 @@ class TestTemplate extends StatelessWidget {
             children: <Widget>[
               _city.displayCityInfo(),
               _city.displayPlaceInfo(),
-              _city.displayCityInfo(),
+              _city.displayCitySubwayMap(),
             ],
           ),
         ),

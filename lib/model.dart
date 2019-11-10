@@ -1,6 +1,5 @@
 import 'package:sample_app_1/components.dart';
 
-
 //----------City model----------//
 class PlaceInfo {
   String _placeName, _placeDescription, _imagePath;
@@ -8,13 +7,12 @@ class PlaceInfo {
 }
 
 class CityModel {
-  String _cityName, _cityRoute;
-  List<String> _cityInfo; /*_mapPath*/
+  String _cityName, _citySubwayMap;
+  List<String> _cityInfo;
   List<PlaceInfo> _places;
-  CityModel(this._cityName, this._cityInfo, this._places);
+  CityModel(this._cityName, this._cityInfo, this._places, this._citySubwayMap);
 }
 //----------City model----------//
-
 
 //----------City controller----------//
 class CityController {
@@ -26,9 +24,13 @@ class CityController {
     return _city._cityName;
   }
 
-  String getCityRoute() {
-    return _city._cityRoute;
+  String getSubwayMap() {
+    return _city._citySubwayMap;
   }
+
+  /*String getCityRoute() {
+    return _city._cityRoute;
+  }*/
 
   CustomTabBarSection displayCityInfo() {
     List<ContentCard> cityInfoList = new List<ContentCard>();
@@ -47,6 +49,14 @@ class CityController {
 
     return new CustomTabBarSection(placeCards);
   }
+
+  CustomTabBarSection displayCitySubwayMap() {
+    List<MapZoomableImage> mapList = new List<MapZoomableImage>();
+    MapZoomableImage subwayMap = new MapZoomableImage(getSubwayMap());
+    mapList.add(subwayMap);
+    return new CustomTabBarSection(mapList);
+  }
+
   //----------Accessor functions----------//
 }
 //----------City controller----------//

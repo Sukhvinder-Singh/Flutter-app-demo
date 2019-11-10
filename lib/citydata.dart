@@ -6,7 +6,7 @@ var cityData = {
     'name': 'London',
     'route': '/london',
     'header_image_path': 'path',
-    'map_path': 'path',
+    'subway_map_path': 'http://www.bbc.co.uk/london/travel/downloads/tube_map.gif',
     'info': {
       'London, the capital of England and the United Kingdom, is a 21st-century city with history stretching back to Roman times. At its centre stand the imposing Houses of Parliament, the iconic ‘Big Ben’ clock tower and Westminster Abbey, site of British monarch coronations. Across the Thames River, the London Eye observation wheel provides panoramic views of the South Bank cultural complex, and the entire city.',
       'The metro or London Underground is a system of electric trains which are in London, United Kingdom. It is the oldest underground railway in the world. It started running in 1863 as the Metropolitan Railway. After the opening the system was copied in many other cities, for example New York and Madrid. Even though it is called the Underground about half of it is above the ground. The "Tube" is a slang name for the London Underground, because the tunnels for some of the lines are round tubes running through the ground. The Underground has got 274 stations and over 408 km of track. From 2006–2007 over 1 billion passengers used the underground.',
@@ -73,7 +73,7 @@ List<PlaceInfo> getPlacesInfoFromModel(String x) {
 //Builder function
 CityModel buildCity(String x) {
   return new CityModel(
-      cityData[x]['name'], getCityInfoFromModel(x), getPlacesInfoFromModel(x));
+      cityData[x]['name'], getCityInfoFromModel(x), getPlacesInfoFromModel(x),cityData[x]['subway_map_path']);
 }
 
 //----------City builds----------//

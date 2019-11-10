@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
 
 class MainHeadingStrip extends StatelessWidget {
   final Color _color;
@@ -126,6 +127,37 @@ class PlaceCard extends StatelessWidget {
   }
 }
 
+class MapZoomableImage extends StatelessWidget {
+  final String _imagePath;
+  MapZoomableImage(this._imagePath);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Container(
+            padding: EdgeInsets.all(15),
+            child: SizedBox(
+              height: 400,
+              child: Card(
+                clipBehavior: Clip.antiAlias,
+                child: PhotoView.customChild(
+                childSize: MediaQuery.of(context).size,
+                child: Container(
+                  child: Image.network(_imagePath),
+                ),
+                //imageProvider: NetworkImage(_imagePath),
+              ),
+              ),
+            ))
+      ],
+    );
+  }
+}
+
 class CustomButton extends StatelessWidget {
   final Color _themeColor;
   final String _buttonText, _buttonRoute;
@@ -189,7 +221,7 @@ class CustomTabBarSection extends StatelessWidget {
       child: Builder(
         builder: (BuildContext context) {
           return CustomScrollView(
-            physics: AlwaysScrollableScrollPhysics(),
+            physics: BouncingScrollPhysics(),
             slivers: <Widget>[
               SliverOverlapInjector(
                 handle:
