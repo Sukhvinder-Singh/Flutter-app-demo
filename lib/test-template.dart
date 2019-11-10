@@ -37,7 +37,7 @@ class TestTemplate extends StatelessWidget {
                     indicatorWeight: 4.0,
                     tabs: [
                       Tab(icon: Icon(Icons.info), text: "Information"),
-                      Tab(icon: Icon(Icons.hotel), text: "Hotels"),
+                      Tab(icon: Icon(Icons.location_on), text: "Tourist places"),
                       Tab(icon: Icon(Icons.subway), text: "Metro/Subway"),
                     ],
                   ),
@@ -47,64 +47,9 @@ class TestTemplate extends StatelessWidget {
           },
           body: TabBarView(
             children: <Widget>[
-              /*SafeArea(
-                top: false,
-                bottom: false,
-                child: Builder(
-                  builder: (BuildContext context) {
-                    return CustomScrollView(
-                      slivers: <Widget>[
-                        SliverOverlapInjector(
-                          handle:
-                              NestedScrollView.sliverOverlapAbsorberHandleFor(
-                                  context),
-                        ),
-                        SliverPadding(
-                          padding: const EdgeInsets.all(8.0),
-                          sliver: SliverList(
-                            delegate: SliverChildListDelegate(
-                              [
-                                //...getContentCards(_tabs),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    );
-                  },
-                ),
-              ),
-              SafeArea(
-                top: false,
-                bottom: false,
-                child: Builder(
-                  builder: (BuildContext context) {
-                    return CustomScrollView(
-                      slivers: <Widget>[
-                        SliverOverlapInjector(
-                          handle:
-                              NestedScrollView.sliverOverlapAbsorberHandleFor(
-                                  context),
-                        ),
-                        SliverPadding(
-                          padding: const EdgeInsets.all(8.0),
-                          sliver: SliverList(
-                            delegate: SliverChildListDelegate(
-                              [
-                                // ...getContentCards(_tabs),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    );
-                  },
-                ),
-              ),*/
-
-              _city.displayCityInfo(),
               _city.displayCityInfo(),
               _city.displayPlaceInfo(),
+              _city.displayCityInfo(),
             ],
           ),
         ),

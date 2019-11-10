@@ -49,27 +49,22 @@ class ContentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(15, 0, 15, 20),
-      child: Container(
-        padding: EdgeInsets.all(15),
-        decoration: new BoxDecoration(
-          color: Colors.white,
-          borderRadius: new BorderRadius.all(const Radius.circular(10)),
-          boxShadow: [
-            BoxShadow(
-              color: Color.fromRGBO(0, 0, 0, 0.15),
-              offset: new Offset(3.0, 3.0),
-              blurRadius: 10.0,
-            ),
-          ],
+    return new Container(
+      padding: EdgeInsets.all(5),
+      child: Card(
+        elevation: 3,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
         ),
-        child: Text(
-          _text,
-          style: new TextStyle(
-            fontWeight: FontWeight.w200,
-            fontSize: 16,
-            color: Colors.black,
+        child: Container(
+          padding: EdgeInsets.all(15),
+          child: Text(
+            _text,
+            style: new TextStyle(
+              fontWeight: FontWeight.w200,
+              fontSize: 16,
+              color: Colors.black,
+            ),
           ),
         ),
       ),
@@ -82,23 +77,50 @@ class PlaceCard extends StatelessWidget {
   PlaceCard(this._imagePath, this._placeName, this._placeDescription);
   @override
   Widget build(BuildContext context) {
-    return new Card(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          ListTile(
-            leading: CircleAvatar(
-              radius: 18,
-              child: ClipOval(
-                child: Image.network(
-                  _imagePath,
+    return new Container(
+      padding: EdgeInsets.all(5),
+      child: Card(
+        elevation: 3,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.all(5),
+              child: ListTile(
+                leading: CircleAvatar(
+                  radius: 30,
+                  child: ClipOval(
+                    child: Image.network(
+                      _imagePath,
+                    ),
+                  ),
+                ),
+                title: Container(
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                  child: Text(
+                    _placeName,
+                    style: new TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 18,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                subtitle: Text(
+                  _placeDescription,
+                  style: new TextStyle(
+                    fontWeight: FontWeight.w200,
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
                 ),
               ),
             ),
-            title: Text(_placeName),
-            subtitle: Text(_placeDescription),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -167,6 +189,7 @@ class CustomTabBarSection extends StatelessWidget {
       child: Builder(
         builder: (BuildContext context) {
           return CustomScrollView(
+            physics: AlwaysScrollableScrollPhysics(),
             slivers: <Widget>[
               SliverOverlapInjector(
                 handle:
