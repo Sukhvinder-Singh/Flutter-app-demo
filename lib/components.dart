@@ -133,7 +133,20 @@ class MapZoomableImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Container(
+      padding: EdgeInsets.all(15),
+      child: SizedBox(
+        height: 400,
+        child: ClipRect(
+          clipBehavior: Clip.antiAlias,
+          child: PhotoView(
+            imageProvider: NetworkImage(_imagePath),
+          ),
+        ),
+      ),
+    );
+
+    /*Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
@@ -142,19 +155,25 @@ class MapZoomableImage extends StatelessWidget {
             padding: EdgeInsets.all(15),
             child: SizedBox(
               height: 400,
-              child: Card(
+              child: ClipRect(
+                clipBehavior: Clip.antiAlias,
+                child: ,
+              )
+              
+              
+               Card(
                 clipBehavior: Clip.antiAlias,
                 child: PhotoView.customChild(
-                childSize: MediaQuery.of(context).size,
-                child: Container(
-                  child: Image.network(_imagePath),
+                  childSize: MediaQuery.of(context).size,
+                  child: Container(
+                    child: Image.network(_imagePath),
+                  ),
+                  //imageProvider: NetworkImage(_imagePath),
                 ),
-                //imageProvider: NetworkImage(_imagePath),
-              ),
               ),
             ))
       ],
-    );
+    );*/
   }
 }
 
