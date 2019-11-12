@@ -136,7 +136,7 @@ class MapZoomableImage extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(15),
       child: SizedBox(
-        height: 400,
+        height: 500,
         child: ClipRect(
           clipBehavior: Clip.antiAlias,
           child: PhotoView(
@@ -145,35 +145,6 @@ class MapZoomableImage extends StatelessWidget {
         ),
       ),
     );
-
-    /*Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Container(
-            padding: EdgeInsets.all(15),
-            child: SizedBox(
-              height: 400,
-              child: ClipRect(
-                clipBehavior: Clip.antiAlias,
-                child: ,
-              )
-              
-              
-               Card(
-                clipBehavior: Clip.antiAlias,
-                child: PhotoView.customChild(
-                  childSize: MediaQuery.of(context).size,
-                  child: Container(
-                    child: Image.network(_imagePath),
-                  ),
-                  //imageProvider: NetworkImage(_imagePath),
-                ),
-              ),
-            ))
-      ],
-    );*/
   }
 }
 
@@ -240,7 +211,7 @@ class CustomTabBarSection extends StatelessWidget {
       child: Builder(
         builder: (BuildContext context) {
           return CustomScrollView(
-            physics: BouncingScrollPhysics(),
+            physics: ClampingScrollPhysics(),
             slivers: <Widget>[
               SliverOverlapInjector(
                 handle:

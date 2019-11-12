@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:sample_app_1/model.dart';
 
 class TestTemplate extends StatelessWidget {
-  final Color _themeColor;
-  final String _appBarText, _imagePath;
+  final String _imagePath;
   final CityController _city;
-  TestTemplate(this._themeColor, this._appBarText, this._imagePath, this._city);
+  TestTemplate(this._imagePath, this._city);
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +19,11 @@ class TestTemplate extends StatelessWidget {
                 handle:
                     NestedScrollView.sliverOverlapAbsorberHandleFor(context),
                 child: SliverAppBar(
-                  title: Text(_appBarText), // This is the title in the app bar.
+                  title: Text(_city.getCityName()),
                   pinned: true,
                   expandedHeight: 350,
                   centerTitle: true,
-                  backgroundColor: _themeColor,
+                  backgroundColor: _city.getCityPageThemeColor(),
                   forceElevated: innerBoxIsScrolled,
                   flexibleSpace: FlexibleSpaceBar(
                     background: Image.asset(
@@ -32,11 +31,10 @@ class TestTemplate extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-
                   bottom: PreferredSize(
                     preferredSize: new Size.fromHeight(85),
                     child: Container(
-                      color: _themeColor,
+                      color: _city.getCityPageThemeColor(),
                       child: TabBar(
                         indicatorColor: Colors.white,
                         indicatorWeight: 5.0,
@@ -55,6 +53,7 @@ class TestTemplate extends StatelessWidget {
             ];
           },
           body: TabBarView(
+            physics: NeverScrollableScrollPhysics(),
             children: <Widget>[
               _city.displayCityInfo(),
               _city.displayPlaceInfo(),

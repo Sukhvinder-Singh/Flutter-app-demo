@@ -1,12 +1,15 @@
+import 'package:flutter/material.dart';
 import 'package:sample_app_1/model.dart';
 
 //City data
 var cityData = {
   'london': {
     'name': 'London',
+    'themecolor': '255,0,0',
     'route': '/london',
     'header_image_path': 'path',
-    'subway_map_path': 'http://www.bbc.co.uk/london/travel/downloads/tube_map.gif',
+    'subway_map_path':
+        'http://www.bbc.co.uk/london/travel/downloads/tube_map.gif',
     'info': {
       'London, the capital of England and the United Kingdom, is a 21st-century city with history stretching back to Roman times. At its centre stand the imposing Houses of Parliament, the iconic ‘Big Ben’ clock tower and Westminster Abbey, site of British monarch coronations. Across the Thames River, the London Eye observation wheel provides panoramic views of the South Bank cultural complex, and the entire city.',
       'The metro or London Underground is a system of electric trains which are in London, United Kingdom. It is the oldest underground railway in the world. It started running in 1863 as the Metropolitan Railway. After the opening the system was copied in many other cities, for example New York and Madrid. Even though it is called the Underground about half of it is above the ground. The "Tube" is a slang name for the London Underground, because the tunnels for some of the lines are round tubes running through the ground. The Underground has got 274 stations and over 408 km of track. From 2006–2007 over 1 billion passengers used the underground.',
@@ -60,6 +63,16 @@ List<String> getCityInfoFromModel(String x) {
   return cityInfoListInModel;
 }
 
+Color getCityThemeColorFromModel(String x) {
+  String rgbCode = cityData[x]['themecolor'];
+  List<String> splitString = rgbCode.split(',').toList();
+  int r, g, b;
+  r = int.parse(splitString[0].toString());
+  g = int.parse(splitString[1].toString());
+  b = int.parse(splitString[2].toString());
+  return new Color.fromRGBO(r, g, b, 1);
+}
+
 List<PlaceInfo> getPlacesInfoFromModel(String x) {
   List<PlaceInfo> placeInfoListInModel = new List<PlaceInfo>();
   for (var i in cityData[x]['places']) {
@@ -73,7 +86,11 @@ List<PlaceInfo> getPlacesInfoFromModel(String x) {
 //Builder function
 CityModel buildCity(String x) {
   return new CityModel(
-      cityData[x]['name'], getCityInfoFromModel(x), getPlacesInfoFromModel(x),cityData[x]['subway_map_path']);
+      cityData[x]['name'],
+      getCityThemeColorFromModel(x),
+      getCityInfoFromModel(x),
+      getPlacesInfoFromModel(x),
+      cityData[x]['subway_map_path']);
 }
 
 //----------City builds----------//

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:sample_app_1/components.dart';
 
 //----------City model----------//
@@ -10,7 +11,9 @@ class CityModel {
   String _cityName, _citySubwayMap;
   List<String> _cityInfo;
   List<PlaceInfo> _places;
-  CityModel(this._cityName, this._cityInfo, this._places, this._citySubwayMap);
+  Color _themeColor;
+  CityModel(this._cityName, this._themeColor, this._cityInfo, this._places,
+      this._citySubwayMap);
 }
 //----------City model----------//
 
@@ -28,9 +31,9 @@ class CityController {
     return _city._citySubwayMap;
   }
 
-  /*String getCityRoute() {
-    return _city._cityRoute;
-  }*/
+  Color getCityPageThemeColor() {
+    return _city._themeColor;
+  }
 
   CustomTabBarSection displayCityInfo() {
     List<ContentCard> cityInfoList = new List<ContentCard>();
@@ -56,7 +59,6 @@ class CityController {
     mapList.add(subwayMap);
     return new CustomTabBarSection(mapList);
   }
-
   //----------Accessor functions----------//
 }
 //----------City controller----------//

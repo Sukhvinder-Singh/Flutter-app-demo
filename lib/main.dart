@@ -75,6 +75,6 @@ class Tokyo extends StatelessWidget {
 class Tt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return TestTemplate(Colors.red, 'London', 'assets/london.jpg', CityController(londons));
+    return TestTemplate('assets/london.jpg', CityController(londons));
 }
 }
