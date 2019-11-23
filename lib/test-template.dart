@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sample_app_1/model.dart';
 
 class TestTemplate extends StatelessWidget {
-  final String _imagePath;
   final CityController _city;
-  TestTemplate(this._imagePath, this._city);
+  TestTemplate(this._city);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +26,7 @@ class TestTemplate extends StatelessWidget {
                   forceElevated: innerBoxIsScrolled,
                   flexibleSpace: FlexibleSpaceBar(
                     background: Image.asset(
-                      _imagePath,
+                      _city.getCityHeroImage(),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -53,7 +52,7 @@ class TestTemplate extends StatelessWidget {
             ];
           },
           body: TabBarView(
-            physics: NeverScrollableScrollPhysics(),
+            physics: BouncingScrollPhysics(),
             children: <Widget>[
               _city.displayCityInfo(),
               _city.displayPlaceInfo(),

@@ -7,7 +7,7 @@ var cityData = {
     'name': 'London',
     'themecolor': '255,0,0',
     'route': '/london',
-    'header_image_path': 'path',
+    'header_image_path': 'assets/london.jpg',
     'subway_map_path':
         'http://www.bbc.co.uk/london/travel/downloads/tube_map.gif',
     'info': {
@@ -87,6 +87,7 @@ List<PlaceInfo> getPlacesInfoFromModel(String x) {
 CityModel buildCity(String x) {
   return new CityModel(
       cityData[x]['name'],
+      cityData[x]['header_image_path'],
       getCityThemeColorFromModel(x),
       getCityInfoFromModel(x),
       getPlacesInfoFromModel(x),

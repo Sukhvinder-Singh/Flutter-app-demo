@@ -128,19 +128,60 @@ class PlaceCard extends StatelessWidget {
 }
 
 class MapZoomableImage extends StatelessWidget {
-  final String _imagePath;
-  MapZoomableImage(this._imagePath);
+  final String _imagePath, _cityName;
+  final Color _themeColor;
+  MapZoomableImage(this._imagePath, this._cityName, this._themeColor);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(15),
-      child: SizedBox(
-        height: 500,
-        child: ClipRect(
-          clipBehavior: Clip.antiAlias,
+      child: Column(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(bottom: 45),
+            child: Text(
+              "Tap on the map for full screen zoomable view",
+              style: new TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 16,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MapZoomableImageScreen(
+                      _imagePath, _cityName, _themeColor),
+                ),
+              );
+            },
+            child: Image.network(_imagePath),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class MapZoomableImageScreen extends StatelessWidget {
+  final String _map, _cityName;
+  final Color _themeColor;
+  MapZoomableImageScreen(this._map, this._cityName, this._themeColor);
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(_cityName + ' subway map'),
+        backgroundColor: _themeColor,
+      ),
+      body: SizedBox.expand(
+        child: Container(
           child: PhotoView(
-            imageProvider: NetworkImage(_imagePath),
+            imageProvider: NetworkImage(_map),
+            maxScale: 5.0,
           ),
         ),
       ),
@@ -211,7 +252,7 @@ class CustomTabBarSection extends StatelessWidget {
       child: Builder(
         builder: (BuildContext context) {
           return CustomScrollView(
-            physics: ClampingScrollPhysics(),
+            physics: BouncingScrollPhysics(),
             slivers: <Widget>[
               SliverOverlapInjector(
                 handle:

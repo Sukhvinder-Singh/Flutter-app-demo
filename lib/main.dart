@@ -6,9 +6,6 @@ import 'package:sample_app_1/model.dart';
 import 'package:sample_app_1/template.dart';
 import 'package:sample_app_1/test-template.dart';
 
-
-
-
 void main() {
   runApp(MaterialApp(
     title: 'routed-app-sukhvinder-singh',
@@ -19,7 +16,7 @@ void main() {
       '/newyork': (context) => NewYork(),
       '/paris': (context) => Paris(),
       '/tokyo': (context) => Tokyo(),
-      '/testpage' : (context) => Tt(),
+      '/testpage': (context) => Tt(),
     },
   ));
 }
@@ -70,11 +67,9 @@ class Tokyo extends StatelessWidget {
   }
 }
 
-
-
 class Tt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return TestTemplate('assets/london.jpg', CityController(londons));
-}
+    return TestTemplate(CityController(londons));
+  }
 }

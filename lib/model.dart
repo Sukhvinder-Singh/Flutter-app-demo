@@ -8,12 +8,12 @@ class PlaceInfo {
 }
 
 class CityModel {
-  String _cityName, _citySubwayMap;
+  String _cityName, _cityHeroImage, _citySubwayMap;
   List<String> _cityInfo;
   List<PlaceInfo> _places;
   Color _themeColor;
-  CityModel(this._cityName, this._themeColor, this._cityInfo, this._places,
-      this._citySubwayMap);
+  CityModel(this._cityName, this._cityHeroImage, this._themeColor,
+      this._cityInfo, this._places, this._citySubwayMap);
 }
 //----------City model----------//
 
@@ -25,6 +25,10 @@ class CityController {
   //----------Accessor functions----------//
   String getCityName() {
     return _city._cityName;
+  }
+
+  String getCityHeroImage() {
+    return _city._cityHeroImage;
   }
 
   String getSubwayMap() {
@@ -55,7 +59,8 @@ class CityController {
 
   CustomTabBarSection displayCitySubwayMap() {
     List<MapZoomableImage> mapList = new List<MapZoomableImage>();
-    MapZoomableImage subwayMap = new MapZoomableImage(getSubwayMap());
+    MapZoomableImage subwayMap = new MapZoomableImage(
+        getSubwayMap(), getCityName(), getCityPageThemeColor());
     mapList.add(subwayMap);
     return new CustomTabBarSection(mapList);
   }
