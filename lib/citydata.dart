@@ -1,12 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:sample_app_1/model.dart';
-
-//City data
 var cityData = {
   'london': {
     'name': 'London',
     'themecolor': '255,0,0',
-    'route': '/london',
     'header_image_path': 'assets/london.jpg',
     'subway_map_path':
         'http://www.bbc.co.uk/london/travel/downloads/tube_map.gif',
@@ -52,47 +47,24 @@ var cityData = {
       },
     },
   },
+  'newyork': {
+    'name': 'Ney York',
+    'themecolor': '0,102,255',
+    'header_image_path': 'assets/newyork.jpg',
+    'subway_map_path':
+        'https://upload.wikimedia.org/wikipedia/commons/1/1f/New_York_Subway_Map_Alargule.svg',
+    'info': {
+      'New York City comprises 5 boroughs sitting where the Hudson River meets the Atlantic Ocean. At its core is Manhattan, a densely populated borough that’s among the world’s major commercial, financial and cultural centers. Its iconic sites include skyscrapers such as the Empire State Building and sprawling Central Park. Broadway theater is staged in neon-lit Times Square.',
+      'New York City is situated in the Northeastern United States, in southeastern New York State, approximately halfway between Washington, D.C. and Boston. The location at the mouth of the Hudson River, which feeds into a naturally sheltered harbor and then into the Atlantic Ocean, has helped the city grow in significance as a trading port. Most of New York City is built on the three islands of Long Island, Manhattan, and Staten Island.',
+    },
+    'places': {
+      {
+        'place_name': 'Statue of Liberty',
+        'image_path':
+            'https://lh5.googleusercontent.com/p/AF1QipOav6g5X9vfDhXrRLLVN2dxZo0yAEZxz-Zzdx2e=w93-h160-k-no',
+        'description':
+            'The Statue of Liberty (Liberty Enlightening the World; French: La Liberté éclairant le monde) is a colossal neoclassical sculpture on Liberty Island in New York Harbor in New York, in the United States. The copper statue, a gift from the people of France to the people of the United States, was designed by French sculptor Frédéric Auguste Bartholdi and its metal framework was built by Gustave Eiffel. The statue was dedicated on October 28, 1886.',
+      },
+    },
+  },
 };
-
-//----------Iterator functions----------//
-List<String> getCityInfoFromModel(String x) {
-  List<String> cityInfoListInModel = new List<String>();
-  for (var i in cityData[x]['info']) {
-    cityInfoListInModel.add(i);
-  }
-  return cityInfoListInModel;
-}
-
-Color getCityThemeColorFromModel(String x) {
-  String rgbCode = cityData[x]['themecolor'];
-  List<String> splitString = rgbCode.split(',').toList();
-  int r, g, b;
-  r = int.parse(splitString[0].toString());
-  g = int.parse(splitString[1].toString());
-  b = int.parse(splitString[2].toString());
-  return new Color.fromRGBO(r, g, b, 1);
-}
-
-List<PlaceInfo> getPlacesInfoFromModel(String x) {
-  List<PlaceInfo> placeInfoListInModel = new List<PlaceInfo>();
-  for (var i in cityData[x]['places']) {
-    placeInfoListInModel
-        .add(new PlaceInfo(i['place_name'], i['description'], i['image_path']));
-  }
-  return placeInfoListInModel;
-}
-//----------Iterator functions----------//
-
-//Builder function
-CityModel buildCity(String x) {
-  return new CityModel(
-      cityData[x]['name'],
-      cityData[x]['header_image_path'],
-      getCityThemeColorFromModel(x),
-      getCityInfoFromModel(x),
-      getPlacesInfoFromModel(x),
-      cityData[x]['subway_map_path']);
-}
-
-//----------City builds----------//
-CityModel londons = buildCity('london');

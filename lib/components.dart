@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
+import 'package:sample_app_1/model.dart';
+import 'package:sample_app_1/page-template.dart';
 
 class MainHeadingStrip extends StatelessWidget {
   final Color _color;
@@ -19,26 +21,6 @@ class MainHeadingStrip extends StatelessWidget {
           color: Colors.white,
         ),
         textAlign: TextAlign.center,
-      ),
-    );
-  }
-}
-
-class IconRow extends StatelessWidget {
-  final Color _color;
-  IconRow(this._color);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(15),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Icon(Icons.account_circle, color: _color),
-          Icon(Icons.add_a_photo, color: _color),
-          Icon(Icons.cake, color: _color),
-        ],
       ),
     );
   }
@@ -71,6 +53,14 @@ class ContentCard extends StatelessWidget {
       ),
     );
   }
+}
+
+List<ContentCard> getContentCards(List<String> content) {
+  List<ContentCard> contentList = new List<ContentCard>();
+  for (int i = 0; i < content.length; i++) {
+    contentList.add(new ContentCard(content[i]));
+  }
+  return contentList;
 }
 
 class PlaceCard extends StatelessWidget {
@@ -189,11 +179,9 @@ class MapZoomableImageScreen extends StatelessWidget {
   }
 }
 
-class CustomButton extends StatelessWidget {
-  final Color _themeColor;
-  final String _buttonText, _buttonRoute;
-
-  CustomButton(this._themeColor, this._buttonText, this._buttonRoute);
+class RoutedButton extends StatelessWidget {
+  final CityController _routeToCity;
+  RoutedButton(this._routeToCity);
 
   @override
   Widget build(BuildContext context) {
@@ -203,41 +191,59 @@ class CustomButton extends StatelessWidget {
         width: double.infinity,
         child: new RaisedButton(
           onPressed: () {
-            Navigator.pushNamed(context, _buttonRoute);
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PageTemplate(_routeToCity),
+                ));
           },
           textColor: Colors.white,
-          color: _themeColor,
+          color: _routeToCity.getCityPageThemeColor(),
           padding: EdgeInsets.all(15),
-          child: Text(_buttonText),
+          child: Text(_routeToCity.getCityName()),
         ),
       ),
     );
   }
 }
 
-class GoBackButton extends StatelessWidget {
-  final Color _themeColor;
+List<RoutedButton> getRoutedButtons(List<CityModel> cities) {
+  List<RoutedButton> routedButtonList = new List<RoutedButton>();
 
-  GoBackButton(this._themeColor);
+  for (int i = 0; i < cities.length; i++) {
+    routedButtonList.add(new RoutedButton(new CityController(cities[i])));
+  }
+  return routedButtonList;
+}
+
+class DrawerItem extends StatelessWidget {
+  final CityController _routeToCity;
+  DrawerItem(this._routeToCity);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(30, 0, 30, 20),
-      child: new SizedBox(
-        width: double.infinity,
-        child: new RaisedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/');
-          },
-          textColor: Colors.white,
-          color: _themeColor,
-          padding: EdgeInsets.all(15),
-          child: Text('Go Back'),
-        ),
-      ),
+    return ListTile(
+      title: Text(_routeToCity.getCityName()),
+      trailing: Icon(Icons.arrow_forward),
+      onTap: () {
+        Navigator.of(context).pop();
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => PageTemplate(_routeToCity),
+          ),
+        );
+      },
     );
   }
+}
+
+List<DrawerItem> getDrawerItems(List<CityModel> cities) {
+  List<DrawerItem> drawerList = new List<DrawerItem>();
+  for (int i = 0; i < cities.length; i++) {
+    drawerList.add(new DrawerItem(new CityController(cities[i])));
+  }
+  return drawerList;
 }
 
 class CustomTabBarSection extends StatelessWidget {
