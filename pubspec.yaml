@@ -43,11 +43,27 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/london-big-ben.jpg
+    - assets/london-london-eye.jpg
+    - assets/london-map.png
+    - assets/london-palace.jpg
+    - assets/london-tower-bridge.jpg
+    - assets/london-westminster.jpg
     - assets/london.jpg
+    - assets/newyork-empire-state.jpg
+    - assets/newyork-map.png
+    - assets/newyork-statue.jpg
+    - assets/newyork.jpg
+    - assets/paris-arc.jpg
+    - assets/paris-eifil-tower.jpg
+    - assets/paris-map.png
     - assets/paris.jpg
     - assets/plane.jpg
-    - assets/newyork.jpg
+    - assets/tokyo-akihabara.jpg
+    - assets/tokyo-map.png
+    - assets/tokyo-tower.jpg
     - assets/tokyo.jpg
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:

@@ -84,7 +84,7 @@ class PlaceCard extends StatelessWidget {
                 leading: CircleAvatar(
                   radius: 30,
                   child: ClipOval(
-                    child: Image.network(
+                    child: Image.asset(
                       _imagePath,
                     ),
                   ),
@@ -149,7 +149,7 @@ class MapZoomableImage extends StatelessWidget {
                 ),
               );
             },
-            child: Image.network(_imagePath),
+            child: Image.asset(_imagePath),
           ),
         ],
       ),
@@ -170,7 +170,7 @@ class MapZoomableImageScreen extends StatelessWidget {
       body: SizedBox.expand(
         child: Container(
           child: PhotoView(
-            imageProvider: NetworkImage(_map),
+            imageProvider: AssetImage(_map),
             maxScale: 5.0,
           ),
         ),

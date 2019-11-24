@@ -44,6 +44,9 @@ class MainPage extends StatelessWidget {
               [
                 MainHeadingStrip(_themeColor, _mainHeadingText),
                 ...getContentCards(_contents),
+                Container(
+                  padding: EdgeInsets.only(bottom: 15),
+                ),
                 ...getRoutedButtons(_cityModels),
               ],
             ),
